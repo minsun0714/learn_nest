@@ -32,8 +32,7 @@ export class CatsController {
 
   @Post()
   async signUp(@Body() body: CatRequestDto) {
-    console.log('📢[cats.controller.ts:34]: body: ', body);
-    return 'signUp';
+    return this.CatsService.signUp(body);
   }
   @Post('login')
   login() {
