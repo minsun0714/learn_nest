@@ -1,5 +1,5 @@
-import { HttpExceptionFilter } from './../http-exception.filter';
-import { PositiveIntegerPipe } from './positiveInt.pipe';
+import { HttpExceptionFilter } from '../common/exceptions/http-exception.filter';
+import { PositiveIntegerPipe } from '../common/pipes/positiveInt.pipe';
 import { Cat, CatsService } from './cats.service';
 import {
   Body,
