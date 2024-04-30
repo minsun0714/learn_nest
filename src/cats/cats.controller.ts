@@ -1,4 +1,5 @@
 import { HttpExceptionFilter } from './../http-exception.filter';
+import { PositiveIntegerPipe } from './positiveInt.pipe';
 import { Cat, CatsService } from './cats.service';
 import {
   Body,
@@ -34,7 +35,9 @@ export class CatsController {
 
   @Get(':id')
   @HttpCode(200)
-  getCatById(@Param('id', ParseIntPipe) id: number): Cat | void {
+  getCatById(
+    @Param('id', ParseIntPipe, PositiveIntegerPipe) id: number,
+  ): Cat | void {
     try {
       return this.CatsService.getCatById(id);
     } catch (error) {
