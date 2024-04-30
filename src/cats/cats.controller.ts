@@ -1,3 +1,4 @@
+import { SuccessInterceptor } from 'src/common/interceptors/success.interceptor';
 import { HttpExceptionFilter } from '../common/exceptions/http-exception.filter';
 import { PositiveIntegerPipe } from '../common/pipes/positiveInt.pipe';
 import { Cat, CatsService } from './cats.service';
@@ -14,9 +15,11 @@ import {
   Post,
   Put,
   UseFilters,
+  UseInterceptors,
 } from '@nestjs/common';
 
 @Controller('cats')
+@UseInterceptors(SuccessInterceptor)
 @UseFilters(HttpExceptionFilter)
 export class CatsController {
   constructor(private readonly CatsService: CatsService) {}
