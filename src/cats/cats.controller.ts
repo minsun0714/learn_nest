@@ -5,6 +5,8 @@ import {
   Delete,
   Get,
   HttpCode,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
@@ -17,7 +19,10 @@ export class CatsController {
   @Get()
   @HttpCode(200)
   getCats(): Cat[] {
-    return this.CatsService.getCats();
+    throw new HttpException(
+      { status: HttpStatus.INTERNAL_SERVER_ERROR, error: 'API is broken' },
+      HttpStatus.INTERNAL_SERVER_ERROR,
+    );
   }
 
   @Get(':id')
