@@ -18,6 +18,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { CatRequestDto } from './dto/cats.request.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('cats')
 @UseInterceptors(SuccessInterceptor)
@@ -25,24 +26,32 @@ import { CatRequestDto } from './dto/cats.request.dto';
 export class CatsController {
   constructor(private readonly CatsService: CatsService) {}
 
+  @ApiOperation({ summary: '현재 고양이' })
   @Get()
   getCurrentCat() {
     return 'current cat';
   }
 
+  @ApiOperation({ summary: '회원가입' })
   @Post()
   async signUp(@Body() body: CatRequestDto) {
     return await this.CatsService.signUp(body);
   }
+
+  @ApiOperation({ summary: '로그인' })
   @Post('login')
   login() {
     return 'login';
   }
+
+  @ApiOperation({ summary: '로그아웃' })
   @Post('logout')
   logout() {
     return 'logout';
   }
-  @Post()
+
+  @ApiOperation({ summary: '이미지 업로드' })
+  @Post('img')
   uploadCatImg() {
     return 'uploadImg';
   }
