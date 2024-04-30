@@ -22,7 +22,7 @@ export class CatsController {
   @Get()
   getCats(): Cat[] | void {
     try {
-      this.CatsService.getCats();
+      return this.CatsService.getCats();
     } catch (error) {
       throw new HttpException(
         'Api is broken',
@@ -35,7 +35,7 @@ export class CatsController {
   @HttpCode(200)
   getCatById(@Param('id') id: string): Cat | void {
     try {
-      this.CatsService.getCatById(id);
+      return this.CatsService.getCatById(id);
     } catch (error) {
       throw new HttpException(
         'Api is broken',
