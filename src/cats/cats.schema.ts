@@ -29,6 +29,10 @@ export class Cat {
   @IsString()
   email: string;
 
+  @ApiProperty({
+    example: 'qwerty12345',
+    description: 'password',
+  })
   @Prop({ required: true })
   @IsNotEmpty()
   @IsString()
