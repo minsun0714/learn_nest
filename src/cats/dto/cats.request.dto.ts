@@ -13,7 +13,4 @@ export class CatRequestDto {
   @IsNotEmpty()
   @IsString()
   password: string;
-
-  @IsString()
-  imgUrl: string;
 }
