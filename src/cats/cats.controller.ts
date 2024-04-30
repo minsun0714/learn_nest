@@ -1,7 +1,7 @@
 import { SuccessInterceptor } from 'src/common/interceptors/success.interceptor';
 import { HttpExceptionFilter } from '../common/exceptions/http-exception.filter';
 import { PositiveIntegerPipe } from '../common/pipes/positiveInt.pipe';
-import { Cat, CatsService } from './cats.service';
+import { CatsService } from './cats.service';
 import {
   Body,
   Controller,
@@ -17,6 +17,7 @@ import {
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
+import { CatSchema, Cat } from './cats.schema';
 
 @Controller('cats')
 @UseInterceptors(SuccessInterceptor)
@@ -30,7 +31,8 @@ export class CatsController {
   }
 
   @Post()
-  async signUp() {
+  async signUp(@Body() body: Cat) {
+    console.log('📢[cats.controller.ts:34]: body: ', body);
     return 'signUp';
   }
   @Post('login')
