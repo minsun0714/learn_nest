@@ -5,6 +5,8 @@ import { HttpExceptionFilter } from './common/exceptions/http-exception.filter';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new HttpExceptionFilter());
-  await app.listen(3000);
+  const PORT = Number(process.env.PORT);
+  console.log('📢[main.ts:9]: PORT: ', PORT);
+  await app.listen(PORT);
 }
 bootstrap();
