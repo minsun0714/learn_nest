@@ -17,7 +17,7 @@ import {
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
-import { CatSchema, Cat } from './cats.schema';
+import { CatRequestDto } from './dto/cats.request.dto';
 
 @Controller('cats')
 @UseInterceptors(SuccessInterceptor)
@@ -31,7 +31,7 @@ export class CatsController {
   }
 
   @Post()
-  async signUp(@Body() body: Cat) {
+  async signUp(@Body() body: CatRequestDto) {
     console.log('📢[cats.controller.ts:34]: body: ', body);
     return 'signUp';
   }
