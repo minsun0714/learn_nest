@@ -23,7 +23,7 @@ export class CatRequestDto {
 
   @ApiProperty({
     example: 'qwe13579',
-    description: 'email',
+    description: 'password',
     required: true,
   })
   @IsNotEmpty()
