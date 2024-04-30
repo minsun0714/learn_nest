@@ -1,4 +1,4 @@
-import { Cat, CatsService } from './cats/cats.service';
+import { CatsService } from './cats/cats.service';
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
@@ -10,7 +10,5 @@ export class AppController {
   ) {}
 
   @Get()
-  getHello(): Cat[] {
-    return this.catsService.getCats();
-  }
+  getHello() {}
 }
