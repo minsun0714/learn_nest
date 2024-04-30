@@ -15,8 +15,11 @@ async function bootstrap() {
     .addTag('cats')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  console.log('📢[main.ts:18]: document: ', document);
   SwaggerModule.setup('api', app, document);
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
   const PORT = Number(process.env.PORT);
   await app.listen(PORT);
 }
