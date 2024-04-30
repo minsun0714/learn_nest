@@ -9,6 +9,7 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -33,7 +34,7 @@ export class CatsController {
 
   @Get(':id')
   @HttpCode(200)
-  getCatById(@Param('id') id: string): Cat | void {
+  getCatById(@Param('id', ParseIntPipe) id: number): Cat | void {
     try {
       return this.CatsService.getCatById(id);
     } catch (error) {
@@ -60,7 +61,10 @@ export class CatsController {
 
   @Put(':id')
   @HttpCode(201)
-  updateCatById(@Param('id') id: string, @Body() body: { name: string }) {
+  updateCatById(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() body: { name: string },
+  ) {
     try {
       this.CatsService.updateCatById(id, body);
       return '고양이의 이름을 성공적으로 수정했습니다.';
@@ -74,7 +78,7 @@ export class CatsController {
 
   @Delete(':id')
   @HttpCode(201)
-  deleteCatById(@Param('id') id: string) {
+  deleteCatById(@Param('id', ParseIntPipe) id: number) {
     try {
       this.CatsService.deleteCatById(id);
       return '고양이를 성공적으로 삭제했습니다.';
